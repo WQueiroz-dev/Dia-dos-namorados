@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nossos Momentos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="pagina2.css">
+</head>
+<div class="hearts-container" id="hearts"></div>
+
+<script>
+  const heartContainer = document.getElementById('hearts');
+
+  function createHeart() {
+    const heart = document.createElement('div');
+    heart.classList.add('heart');
+    heart.innerText = '💖';
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.animationDuration = (Math.random() * 2 + 4) + 's';
+    heartContainer.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 6000);
+  }
+
+  setInterval(createHeart, 500);
+</script>
+
+<body class="bg-pink-50 min-h-screen flex flex-col items-center justify-center p-6">
+
+
+    <h1 class="text-3xl font-bold text-pink-600 mb-6 text-center">Tudo o que me lembra você ❤️</h1>
+
+    <!-- Carrossel -->
+
+    <div class="relative w-full max-w-3xl overflow-hidden"></div>
+
+    <!-- Slides -->
+      <div id="carousel" class="flex transition-transform duration-500 carousel overflow-x-auto snap-x snap-mandatory">
+
+     <!-- Slide 1 -->
+
+    <div class="min-w-full flex-shrink-0 snap-center p-4">
+         <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+           <p class="text-lg mb-4">Como você bem sabe, eu amo esse anime e acredito que o fio do destino seja real. Você é o meu fio do destino❤️</p>
+       <iframe
+        class="mx-auto rounded-lg"
+        width="300"
+        height="169"
+        src="https://www.youtube.com/embed/pT0aZOQP4fY?si=y7RK5JE3ydu-9xKs"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+
+    <!--Slide 2-->
+    <div class="min-w-full flex-shrink-0 snap-center p-4">
+        <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+            <p class="text-lg mb-4"> "Todas as vezes que eu escuto essa música eu me perco nos meus pensamentos e você sempre está lá"</p>
+            <iframe class="mx-auto rounded-lg"
+             width="300" 
+             height="169" 
+             src="https://www.youtube.com/embed/NaZznqme2hg?si=SlaxIs6c0iCwUx1J" frameborder="0"
+             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+             allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+
+     <!-- Slide 3 -->
+
+    <div class="min-w-full flex-shrink-0 snap-center p-4">
+         <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+           <p class="text-lg mb-4">Ah, eu quero reproduzir algumas cenas de anime com você 😏</p>
+       <iframe
+        class="mx-auto rounded-lg"
+        width="300"
+        height="169"
+        src="https://www.youtube.com/embed/MY9992ZaAmM?si=yvvKTeg6Jzxt6C9m"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+
+     <!-- Slide 4 -->
+
+    <div class="min-w-full flex-shrink-0 snap-center p-4">
+         <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+           <p class="text-lg mb-4">"Essa música retrata algumas experiências que eu quero ter com você"</p>
+       <iframe
+        class="mx-auto rounded-lg"
+        width="300"
+        height="169"
+        src="https://www.youtube.com/embed/b5Zay_Hd_7Q?si=1C4l870pJ-n6zDyW"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+
+     <!-- Slide 5 -->
+
+    <div class="min-w-full flex-shrink-0 snap-center p-4">
+         <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+           <p class="text-lg mb-4">Eu te amo.<br> Te amo Mucho.<br> I love you.<br>
+          愛してます(Aishitemasu)</p>
+       <iframe
+        class="mx-auto rounded-lg"
+        width="300"
+        height="169"
+        src="https://www.youtube.com/embed/M53gBWkk2WM?si=Po5NFV39HFZVaHbh"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+    </div>
+    <!--contoles-->
+   <div class="flex justify-between absolute top-1/2 transform -translate-y-1/2 w-full px-4">
+      <button onclick="slide(-1)" class="bg-pink-500 hover:bg-pink-600 text-white p-2 rounded-full shadow-lg">&larr;</button>
+      <button onclick="slide(1)" class="bg-pink-500 hover:bg-pink-600 text-white p-2 rounded-full shadow-lg">&rarr;</button>
+    </div>
+  </div>
+
+    <!--Botão voltar-->
+    <a href="galeria.html" class="mt-6 text-pink-600 underline hover:text-pink-800">NEXT -></a>
+    
+    <!--Script do carrossel-->
+    <script>
+        let currentIndex = 0;
+        const carousel = document.getElementById('carousel');
+        const slides = carousel.children;
+
+        function slide(direction) {
+            const totalSlides = slides.length;
+            currentIndex = (currentIndex + direction + totalSlides) % totalSlides;
+            const offset = slides[currentIndex].offsetLeft;
+            carousel.scrollTo({left: offset, behavior: 'smooth'});
+        }
+    </script>
+
+</body>
+</html>
