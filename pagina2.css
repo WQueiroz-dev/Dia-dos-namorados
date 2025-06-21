@@ -1,11 +1,16 @@
+/*  RESPONSIVIDADE*/
+
+
+
+
+
 .carousel {
     scroll-behavior: smooth;
 }
-
-.carousel {
+/*.carousel {
     display:none;
      
-}
+}*/
 
 /* Animação Corações*/
 
